@@ -114,3 +114,8 @@ $(TARGETS): $(OBJECTS) $(CP_LD_SCRIPT) $(RAWDATAOBJ)
 	$(LD) -L. -T $(CP_LD_SCRIPT) -Map $(MAP) -o $(ELF) 
 	$(OBJCOPY) --pad-to=0x800000 --gap-fill=0xFF $(ELF) $(TARGETS) -O binary
 	makemask $(TARGETS)
+
+
+output/wizardoftheboard.z64: $(TARGETS)
+	mkdir -p output
+	cp $(TARGETS) output/wizardoftheboard.z64
